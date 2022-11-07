@@ -1,0 +1,36 @@
+<div class="col-md-4 offset-md-4 mt-5">
+  <h3> Add Bill </h3>
+  <form #createForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label> Enter Total Units Consumed</label>
+        <input type="text" class="form-control" id="totalUnits"
+        [(ngModel)] = "bill.totalUnits" name="totalUnits" required pattern="^[0-9]*$" #totalUnits="ngModel"
+        [class.is-invalid]="totalUnits.invalid && totalUnits.touched">
+        <div *ngIf="totalUnits.errors && (totalUnits.invalid && totalUnits.touched)">
+          <div *ngIf="totalUnits.errors?.['required']">
+            <small class="txt-danger">Enter Total Units</small>
+          </div>
+          <div *ngIf="totalUnits.errors?.['pattern']">
+            <small class="txt-error">Total Units only accepts numbers</small>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <label>Month</label>
+        <select #cricket (change)="update($event)">
+          <option value="default">----</option>
+          <option *ngFor="let player of data" [value]="player">
+              {{player}}
+          </option>
+      </select>
+        </div>
+      <br>
+      <button class="btn btn-success" type="submit" [disabled]="!createForm.form.valid">Submit</button>
+  </form>
+  <br>
+  <h3 class="txt-error">{{message}}</h3>
+  <br><br>
+  </div>
+  <!-- <h3 class="messageClass">{{message}}</h3> -->
+  <!-- </div> -->

@@ -1,0 +1,31 @@
+
+canvas {
+  height: 100%;
+  width: 100%;
+}
+body {
+  font-family: 'Shojumaru', cursive;
+  background-color: #b38867;
+}
+
+.title {
+  font-size: 100px;
+  color: white;
+  text-align: center;
+}
+
+.emoji-container {
+
+  padding: 30px;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.emoji {
+  font-size: 25px;
+}
+
+.button-container {
+  text-align: center;
+}

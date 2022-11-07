@@ -1,0 +1,45 @@
+
+<div class="row">
+  <div class="col-md-2">
+    <div class="sidebar">
+      <a routerLink="/bill-list-id/{{id}}" routerLinkActive="active">All Bills</a>
+      <a routerLink="/paid-bills/{{id}}" routerLinkActive="active">Paid Bills</a>
+      <a routerLink="/unpaid-bills/{{id}}" routerLinkActive="active">UnPaid Bills</a>
+    </div>
+  </div>
+</div>
+<div class="container mt-5">
+  <div class="form-group">
+    <input type="text" class="form-control search-field mb-5" placeholder="Search Here" [(ngModel)]="searchText">
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-sm table-striped m-10px">
+      <thead>
+        <tr>
+          <th scope="col ">#</th>
+          <th scope="col">Bill Id</th>
+          <th scope="col">Customer Id</th>
+          <th scope="col">Month</th>
+          <th scope="col">Total Units</th>
+          <th scope="col">Total Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bill of bills| filter: searchText; index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{bill.id}}</td>
+          <td>{{bill.customerId}}</td>
+          <td>{{bill.month}}</td>
+          <td>{{bill.totalUnits}}</td>
+          <td>{{bill.cost}}</td>
+          <!-- <td>
+            <button (click) = "updateCustomer(customer.id)" class="btn btn-info"> Update</button>
+          </td>
+          <td>
+            <button (click) = "deleteCustomer(customer.id)" class="btn btn-danger"> Delete</button>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>

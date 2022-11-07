@@ -1,0 +1,50 @@
+
+<div class="row">
+  <div class="col-md-2">
+    <div class="sidebar">
+      <a  routerLink="/customer-list" routerLinkActive="active">List Customers</a>
+      <a routerLink="/create-customer" routerLinkActive="active">Add Customers</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="container p-5">
+  <div class="form-group">
+    <input type="text" class="form-control search-field ip-field" placeholder="Search Here" [(ngModel)]="searchText">
+  </div>
+  <div class="table-responsive mt-5">
+    <table class="table table-bordered table-sm table-striped m-10px">
+      <thead>
+        <tr>
+          <th scope="col ">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Customer Type</th>
+          <th scope="col">Area Code</th>
+          <th scope="col" colspan="4"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers | filter: searchText; index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{customer.firstName | titlecase}}</td>
+          <td>{{customer.lastName | titlecase}}</td>
+          <td>{{customer.type | titlecase}}</td>
+          <td>{{customer.areaCode}}</td>
+          <td>
+            <button (click) = "updateCustomer(customer.id)" class="btn btn-info"> Update</button>
+          </td>
+          <td>
+            <button (click) = "deleteCustomer(customer.id)" class="btn btn-danger"> Delete</button>
+          </td>
+          <td>
+            <button (click) = "addBill(customer.id)" class="btn btn-warning"> Add Bill</button>
+          </td>
+          <td>
+            <button (click) = "viewBills(customer.id)" class="btn btn-success"> View Bills</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
